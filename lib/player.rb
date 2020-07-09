@@ -15,19 +15,26 @@ class Player < ActiveRecord::Base
         puts "Cleared the board!"
     end
 
-    def write_review(game_id, review, rate)
-        Review.create(player_id: self.id, game_id: game_id, player_review: review, rating: rate)
+    def write_review(game, review, rate)
+        x = Game.all.find{|key| key.name == game}
+        y = x.id
+        Review.create(player_id: self.id, game_id: y, player_review: review, rating: rate)
+        puts "Added!"
     end  
 
-    def delete_review(game)
-        game_review = self.reviews.find_by(game_id: game)
+    def delete_review(game)  
+        x = Game.all.find{|key| key.name == game}
+        y = x.id
+        game_review = self.reviews.find_by(game_id: y)
         game_review.destroy
         puts "Removed!"
-    end
+    end  
     
     def update_review(game, review, rate)
-        game_review = self.reviews.find_by(game_id: game)
-        game_review.update(player_review: review, rating: rate)
+        x = Game.all.find{|key| key.name == game}
+        y = x.id
+        updated_review = self.reviews.find_by(game_id: y)
+        updated_review = Review.update(game_id: y, player_review: review, rating: rate)
         puts "Updated!"
     end    
 end
