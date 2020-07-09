@@ -41,8 +41,8 @@ class Player < ActiveRecord::Base
         x = self.games.find{|key| key.name == game}
         y = x.id
         updated_review = self.reviews.find_by(game_id: y)
-        updated_review.update(game_id: y, player_review: review, rating: rate)
-        # updated_review = Review.update(game_id: y, player_review: review, rating: rate)
+        # updated_review.update(game_id: y, player_review: review, rating: rate)
+        updated_review = Review.update(game_id: y, player_review: review, rating: rate)
         puts "Updated!"
     end    
 end
