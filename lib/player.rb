@@ -26,6 +26,7 @@ class Player < ActiveRecord::Base
         x = Game.all.find{|key| key.name == game}
         y = x.id
         game_review = self.reviews.find_by(game_id: y)
+        # game_review.destroy
         game_review.destroy
         puts "Removed!"
     end  
@@ -34,7 +35,8 @@ class Player < ActiveRecord::Base
         x = Game.all.find{|key| key.name == game}
         y = x.id
         updated_review = self.reviews.find_by(game_id: y)
-        updated_review = Review.update(game_id: y, player_review: review, rating: rate)
+        updated_review.update(game_id: y, player_review: review, rating: rate)
+        # updated_review = Review.update(game_id: y, player_review: review, rating: rate)
         puts "Updated!"
     end    
 end
