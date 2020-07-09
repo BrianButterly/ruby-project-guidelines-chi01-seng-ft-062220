@@ -23,16 +23,22 @@ class Player < ActiveRecord::Base
     end  
 
     def delete_review(game)  
-        my_game = Game.all.find{|key| key.name == game}
-        y = my_game.id
+        x = self.games.find{|key| key.name == game}
+        y = x.id
         game_review = self.reviews.find_by(game_id: y)
         game_review.destroy
-        my_game.destroy
+        self.games = self.games.filter {|my_game| my_game.name != game}
+        # self.games = self.games.reject {|game| game.name == game}
+        # self.games = self.games.reject do |game|
+        #     game.name == x
+        # end
+        # x.destroy
+        # binding.pry
         puts "Removed!"
     end  
     
     def update_review(game, review, rate)
-        x = Game.all.find{|key| key.name == game}
+        x = self.games.find{|key| key.name == game}
         y = x.id
         updated_review = self.reviews.find_by(game_id: y)
         updated_review.update(game_id: y, player_review: review, rating: rate)

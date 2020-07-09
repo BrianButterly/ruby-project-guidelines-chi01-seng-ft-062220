@@ -40,7 +40,7 @@ review11 = Review.create(id: 11, player_id: 3, game_id: 8, player_review: "Too m
 review12 = Review.create(id: 12, player_id: 6, game_id: 3, player_review: "If anxiety was a game it would be this. Friends love it but it gets too real for me.", rating: 3)
 
 
-#binding.pry
+# binding.pry
 
 
-puts "hello"
+# puts "hello"
