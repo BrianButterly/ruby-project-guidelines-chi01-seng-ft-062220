@@ -23,11 +23,11 @@ class Player < ActiveRecord::Base
     end  
 
     def delete_review(game)  
-        x = Game.all.find{|key| key.name == game}
-        y = x.id
+        my_game = Game.all.find{|key| key.name == game}
+        y = my_game.id
         game_review = self.reviews.find_by(game_id: y)
-        # game_review.destroy
         game_review.destroy
+        my_game.destroy
         puts "Removed!"
     end  
     
