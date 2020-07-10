@@ -128,7 +128,7 @@ def game_menu
             print ">"
             $player.delete_my_games
             sleep 2
-            whats_next 
+            whats_next    
         when answer == "main_menu"
             main_menu    
     end
