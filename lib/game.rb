@@ -16,6 +16,5 @@ class Game < ActiveRecord::Base
         self.all.map do |key|
             key.name
         end    
-    end 
-    
+    end    
 end
